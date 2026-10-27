@@ -1,0 +1,8 @@
+{
+  "implementation_commit": "b744ffaa114f0f5a1b9322ea6b2e480b1d19bed7",
+  "upstream_base": "19c914495be197a9ab316ac4a36de8080ce339d2",
+  "upstream_issue_posted": false,
+  "upstream_pr_posted": false,
+  "upstream_comment_posted": false,
+  "purpose": "Fork-only review before the user publishes upstream"
+}

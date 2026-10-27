@@ -1,0 +1,195 @@
+{
+  "dataset": "sklearn.datasets.load_digits (real 8x8 handwritten digits)",
+  "seed": 42,
+  "train_samples": 1347,
+  "test_samples": 450,
+  "clean_test_correct": 433,
+  "clean_test_accuracy": 0.9622222222222222,
+  "attacked_samples": 100,
+  "selection": "first correctly classified samples in seeded held-out split",
+  "max_iter": 100,
+  "device": "cpu",
+  "model": "linear",
+  "model_parameters": {
+    "C": 1.0,
+    "class_weight": null,
+    "dual": false,
+    "fit_intercept": true,
+    "intercept_scaling": 1,
+    "l1_ratio": 0.0,
+    "max_iter": 1000,
+    "n_jobs": null,
+    "penalty": "deprecated",
+    "random_state": null,
+    "solver": "lbfgs",
+    "tol": 0.0001,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "versions": {
+    "torch": "2.13.0",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1",
+    "foolbox": "3.3.4"
+  },
+  "results": [
+    {
+      "attack": "l2_untargeted",
+      "successes": 0,
+      "samples": 100,
+      "success_rate": 0.0,
+      "median_norm_successful": null,
+      "within_bounds": true,
+      "sample_predictions": [
+        0,
+        9,
+        1,
+        5,
+        6,
+        7
+      ],
+      "sample_labels": [
+        0,
+        9,
+        1,
+        5,
+        6,
+        7
+      ],
+      "sample_norms": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference_successes": 0,
+      "reference_median_norm_successful": null,
+      "reference_max_absolute_difference": 0.0,
+      "reference_max_norm_difference": 0.0,
+      "reference_median_norm_difference": 0.0,
+      "reference_success_agreement": 100,
+      "reference_prediction_agreement": 100
+    },
+    {
+      "attack": "l2_targeted",
+      "successes": 40,
+      "samples": 100,
+      "success_rate": 0.4,
+      "median_norm_successful": 1.1000107526779175,
+      "within_bounds": true,
+      "sample_predictions": [
+        1,
+        9,
+        1,
+        5,
+        6,
+        7
+      ],
+      "sample_labels": [
+        0,
+        9,
+        1,
+        5,
+        6,
+        7
+      ],
+      "sample_norms": [
+        1.2165957689285278,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "reference_successes": 37,
+      "reference_median_norm_successful": 1.092291235923767,
+      "reference_max_absolute_difference": 0.5108955502510071,
+      "reference_max_norm_difference": 1.2760506868362427,
+      "reference_median_norm_difference": 0.0,
+      "reference_success_agreement": 97,
+      "reference_prediction_agreement": 97
+    },
+    {
+      "attack": "linf_untargeted",
+      "successes": 99,
+      "samples": 100,
+      "success_rate": 0.99,
+      "median_norm_successful": 0.1116911768913269,
+      "within_bounds": true,
+      "sample_predictions": [
+        2,
+        8,
+        2,
+        9,
+        8,
+        9
+      ],
+      "sample_labels": [
+        0,
+        9,
+        1,
+        5,
+        6,
+        7
+      ],
+      "sample_norms": [
+        0.11231549084186554,
+        0.11676383018493652,
+        0.09445017576217651,
+        0.10586917400360107,
+        0.15508657693862915,
+        0.09768682718276978
+      ],
+      "reference_successes": 100,
+      "reference_median_norm_successful": 0.11200335621833801,
+      "reference_max_absolute_difference": 0.0014663934707641602,
+      "reference_max_norm_difference": 7.748603820800781e-06,
+      "reference_median_norm_difference": 1.2516975402832031e-06,
+      "reference_success_agreement": 99,
+      "reference_prediction_agreement": 99
+    },
+    {
+      "attack": "linf_targeted",
+      "successes": 100,
+      "samples": 100,
+      "success_rate": 1.0,
+      "median_norm_successful": 0.19786369800567627,
+      "within_bounds": true,
+      "sample_predictions": [
+        1,
+        0,
+        2,
+        6,
+        7,
+        8
+      ],
+      "sample_labels": [
+        0,
+        9,
+        1,
+        5,
+        6,
+        7
+      ],
+      "sample_norms": [
+        0.2400079071521759,
+        0.14246118068695068,
+        0.09445017576217651,
+        0.22388577461242676,
+        0.22696077823638916,
+        0.1352313756942749
+      ],
+      "reference_successes": 100,
+      "reference_median_norm_successful": 0.19786308705806732,
+      "reference_max_absolute_difference": 0.02386641502380371,
+      "reference_max_norm_difference": 0.0002527981996536255,
+      "reference_median_norm_difference": 1.341104507446289e-06,
+      "reference_success_agreement": 100,
+      "reference_prediction_agreement": 100
+    }
+  ],
+  "reference": "authors' original src/attacks/fmn.py; see source path used for this run",
+  "reference_sha256": "ee82425f454ac66d9a3c90948cde955e6406c01a05b1368751f963d3b71428fa"
+}
