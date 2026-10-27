@@ -8,13 +8,13 @@ Submitted on **27 October 2026**, after reviewing the implementation and drafts:
 
 An ART-native NumPy implementation of the published [Fast Minimum-Norm attack (NeurIPS 2021)](https://arxiv.org/abs/2102.12827), using class-logit gradients. It supports L2 and Linf, targeted and untargeted attacks, batching and finite scalar or featurewise input bounds. It returns the smallest successful example encountered, or the original input when no successful example was found. This is an implementation contribution, not a claim to have invented the attack.
 
-L0, L1, restarts and adversarial starting points are outside this initial scope. The attack follows the reference's evaluation order: the final gradient update is not evaluated for inclusion in the result. Small safeguards handle flat/non-finite gradients, float32 boundary rounding and bounded outputs. Logits and matching logit gradients are required; no softmax layer.
+L0, L1, restarts and adversarial starting points are outside this initial scope. The attack follows the reference's evaluation order: the final gradient update is not evaluated for inclusion in the result. Numerical safeguards handle flat gradients, float32 boundary rounding and bounded outputs; non-finite logits or gradients raise a descriptive error. Logits and matching logit gradients are required; no softmax layer.
 
 ## Real data and results
 
 The bundled scikit-learn handwritten digits dataset contains real 8×8 images. A seeded, stratified split uses **1,347 training samples and 450 held-out test samples**. A trained 64→32→10 tanh MLP correctly classified **431/450 (95.78%)** held-out images. Its fitted weights were copied to PyTorch for logits and autograd; all 450 clean predictions were checked against the fitted scikit-learn model.
 
-We attacked the **first 100 correctly classified samples in the fixed held-out split**, with no selection based on attack outcomes. Targeted labels are `(true_label + 1) % 10`. Each attack used 100 iterations, max step 1, final step 0.01, gamma 0.05, pixel values in [0,1], and CPU.
+We attacked the **first 100 correctly classified samples in the fixed held-out split**, with no selection based on attack outcomes. Targeted labels are `(true_label + 1) % 10`. Each attack used 100 iterations, initial step 1, cosine step-size endpoint 0.01, gamma 0.05, pixel values in [0,1], and CPU.
 
 | Mode | ART successes | Median successful norm | Author reference successes | Reference median norm |
 |---|---:|---:|---:|---:|
@@ -61,20 +61,20 @@ The installed Foolbox 3.3.4 L2 class has a projection that does not use epsilon 
 
 ## Reproduce
 
-Use the **implementation branch** for an upstream PR. The review branch adds evidence and drafts so you can read them here; those files are intentionally outside the implementation commit.
+The upstream PR uses the **implementation branch**. The review branch includes the same attack and adds evidence and historical drafts; those extra files are outside the upstream PR. Run the commands below from the repository root with ART, scikit-learn and PyTorch installed.
 
 ```bash
 python -m unittest tests.attacks.test_fast_minimum_norm
 python examples/fast_minimum_norm_digits.py --model mlp --samples 100 --steps 100 --output-dir /tmp/fmn-digits
 ```
 
-For the original-source comparison, install `foolbox==3.3.4` and `eagerpy==0.30.0`, then use the reference file and licence provided in this review branch:
+For the original-source comparison, check out this fork’s `review/fmn-contribution` branch, which includes the implementation and the reference file below. Install `foolbox==3.3.4` and `eagerpy==0.30.0`, then run from the repository root:
 
 ```bash
 python examples/fast_minimum_norm_digits.py --model mlp --samples 100 --steps 100 --output-dir /tmp/fmn-digits --reference-source contrib/fmn-review/reference-fmn.py
 ```
 
-Switch `--model linear` to reproduce the separate linear limitation. Run `render_samples.py` next to a `digits-mlp` output folder to recreate the figures (requires Matplotlib).
+Switch `--model linear` to reproduce the separate linear limitation. To recreate the figures, save the MLP evaluation under `contrib/fmn-review/digits-mlp` and run `python contrib/fmn-review/render_samples.py` (requires Matplotlib).
 
 Reference provenance: commit `98c68c26aaa72e4259634b94308b6a2db236a38a`, Git blob `9690e2ef0f4fa211fa04c9aba7ada4acd5eaefcc`. The exact source hash is also in the result JSON. Maura Pintor's MIT copyright and licence are preserved in the adapted module and the [reference licence](reference-LICENSE).
 
@@ -85,3 +85,5 @@ Reference provenance: commit `98c68c26aaa72e4259634b94308b6a2db236a38a`, Git blo
 3. [Follow-up comment draft](COMMENT_DRAFT.md), posted with the actual PR link and paper citation.
 
 PR #2856 has been opened and is awaiting upstream review. It has not been merged or accepted.
+
+Documentation follow-up: commit `be12aa3f5251e0de6184ef6db9300446f746464f` adds API usage, classifier requirements, a full paper citation, clearer output/failure explanations and readable CLI help. Attack and evaluation logic are unchanged; Black, Ruff, pycodestyle, whitespace checks and CLI help validation passed. The recorded numerical results and coverage were measured on the original implementation commit.

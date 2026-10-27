@@ -9,5 +9,6 @@
   "upstream_pr": "https://github.com/Trusted-AI/adversarial-robustness-toolbox/pull/2856",
   "upstream_comment": "https://github.com/Trusted-AI/adversarial-robustness-toolbox/issues/2855#issuecomment-6448868987",
   "merged": false,
-  "upstream_ci": "14 workflows awaiting maintainer approval (action_required)"
+  "upstream_ci": "14 workflows awaiting maintainer approval (action_required)",
+  "documentation_commit": "be12aa3f5251e0de6184ef6db9300446f746464f"
 }
