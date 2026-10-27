@@ -1,0 +1,12 @@
+.........     [100%]
+=============================== warnings summary ===============================
+tests/attacks/test_fast_minimum_norm.py::TestFastMinimumNormPyTorch::test_pytorch_and_optional_linf_reference
+  /Users/admin/Open source/adversarial-robustness-toolbox/.venv/lib/python3.13/site-packages/foolbox/attacks/blur.py:3: DeprecationWarning: Please import `gaussian_filter` from the `scipy.ndimage` namespace; the `scipy.ndimage.filters` namespace is deprecated and will be removed in SciPy 2.0.0.
+    from scipy.ndimage.filters import gaussian_filter
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.13.13-final-0 _______________
+
+Coverage JSON written to file /private/tmp/fmn-coverage.json
+9 passed, 1 warning, 59 subtests passed in 7.77s

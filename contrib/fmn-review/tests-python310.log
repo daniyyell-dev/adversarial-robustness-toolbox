@@ -1,0 +1,8 @@
+........s                                                                [100%]
+=============================== warnings summary ===============================
+art/estimators/certification/__init__.py:30
+  /Users/admin/Open source/adversarial-robustness-toolbox/art/estimators/certification/__init__.py:30: UserWarning: PyTorch not found. Not importing DeepZ or Interval Bound Propagation functionality
+    warnings.warn("PyTorch not found. Not importing DeepZ or Interval Bound Propagation functionality")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+8 passed, 1 skipped, 1 warning in 2.61s
