@@ -1,6 +1,6 @@
-# FMN contribution review — not submitted upstream
+# FMN contribution — submitted upstream
 
-The implementation and these drafts are in your fork. No upstream feature issue, pull request or comment has been posted for FMN. Review and edit the drafts before publishing them yourself.
+Submitted on **27 October 2026**, after reviewing the implementation and drafts: [feature issue #2855](https://github.com/Trusted-AI/adversarial-robustness-toolbox/issues/2855), [PR #2856](https://github.com/Trusted-AI/adversarial-robustness-toolbox/pull/2856), and the [linking issue comment](https://github.com/Trusted-AI/adversarial-robustness-toolbox/issues/2855#issuecomment-6448868987). All three posts cite the original NeurIPS 2021 paper and include real digit samples. The PR is open; DCO passed. All 14 upstream CI workflows are awaiting maintainer approval (`action_required`), and maintainer review is pending.
 
 [Implementation branch](https://github.com/daniyyell-dev/adversarial-robustness-toolbox/tree/feature/fast-minimum-norm) · [Attack code](https://github.com/daniyyell-dev/adversarial-robustness-toolbox/blob/feature/fast-minimum-norm/art/attacks/evasion/fast_minimum_norm.py) · [Tests](https://github.com/daniyyell-dev/adversarial-robustness-toolbox/blob/feature/fast-minimum-norm/tests/attacks/test_fast_minimum_norm.py) · [Runnable digits example](https://github.com/daniyyell-dev/adversarial-robustness-toolbox/blob/feature/fast-minimum-norm/examples/fast_minimum_norm_digits.py)
 
@@ -78,10 +78,10 @@ Switch `--model linear` to reproduce the separate linear limitation. Run `render
 
 Reference provenance: commit `98c68c26aaa72e4259634b94308b6a2db236a38a`, Git blob `9690e2ef0f4fa211fa04c9aba7ada4acd5eaefcc`. The exact source hash is also in the result JSON. Maura Pintor's MIT copyright and licence are preserved in the adapted module and the [reference licence](reference-LICENSE).
 
-## Drafts to read and edit
+## Reviewed submission drafts (historical)
 
-1. [Feature issue draft](ISSUE_DRAFT.md): publish this yourself if you want to propose the initial scope.
-2. [Pull request draft](PR_DRAFT.md): use head branch `feature/fast-minimum-norm`, base `Trusted-AI/adversarial-robustness-toolbox:main`; fill the issue link after creating it.
-3. [Follow-up comment draft](COMMENT_DRAFT.md): replace the PR placeholder only after you have created a PR.
+1. [Feature issue draft](ISSUE_DRAFT.md), used as the basis of issue #2855.
+2. [Pull request draft](PR_DRAFT.md), used as the basis of PR #2856; head `feature/fast-minimum-norm`, base `Trusted-AI/adversarial-robustness-toolbox:main`.
+3. [Follow-up comment draft](COMMENT_DRAFT.md), posted with the actual PR link and paper citation.
 
-No PR has been opened or accepted; upstream maintainer interest and review are still pending.
+PR #2856 has been opened and is awaiting upstream review. It has not been merged or accepted.
